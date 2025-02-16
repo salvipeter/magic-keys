@@ -224,7 +224,7 @@ int play(int n_players, Player *players, int starting_player) {
           /* Fake key */
           state->keys[state->position] = FAKE_KEY;
           state->fake_keys[i]++;
-          LOG("Player %d tries a fake key (now has %d)\n",
+          LOG("Player #%d tries a fake key (now has %d)\n",
               i + 1, state->fake_keys[i]);
         }
         state->position = 0;
