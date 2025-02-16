@@ -52,6 +52,10 @@ bool check_combination(Action action) {
     (decision == TRY_KEY || decision == ROLL_AGAIN);
 }
 
+void wake_dice(int *dice) {
+  dice[0] = dice[1] = dice[2] = 1; /* anything but 0 */
+}
+
 bool check_dice(const int *dice, int steps) {
   return dice[0] == steps || dice[1] == steps || dice[2] == steps;
 }
@@ -125,11 +129,12 @@ int play(int n_players, Player *players, int starting_player) {
   key_type[22] = true;
 
   /* Game loop */
+  int dice[3];
   int winner = 0;
   while (!winner) {
     for (int i = starting_player; !winner && i < n_players; ++i) {
       starting_player = 0;
-      int dice[3] = { 1, 1, 1 }; /* anything but 0 */
+      wake_dice(dice);
       bool end_turn = false;
       while (!end_turn) {
         throw(dice);
@@ -160,6 +165,7 @@ int play(int n_players, Player *players, int starting_player) {
             ERROR("tried to teleport with active dice");
           LOG("Player #%d teleports\n", i + 1);
           state->position = 11;
+          wake_dice(dice);
           continue;
         }
 
@@ -173,7 +179,7 @@ int play(int n_players, Player *players, int starting_player) {
             state->position = 22;
           LOG("Player #%d moves to position %d\n", i + 1, state->position);
           if (state->position == 11 && some_asleep(dice)) {
-            dice[0] = dice[1] = dice[2] = 1; /* wake all dice */
+            wake_dice(dice);
             LOG("Player #%d's dice are all awake now\n", i + 1);
           }
         }
@@ -186,7 +192,7 @@ int play(int n_players, Player *players, int starting_player) {
           state->fake_keys[i]--;
           LOG("Player #%d throws a fake key into the magic pond (now has %d)\n",
               i + 1, state->fake_keys[i]);
-          dice[0] = dice[1] = dice[2] = 1; /* wake all dice */
+          wake_dice(dice);
           continue;
         }
 
