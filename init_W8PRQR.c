@@ -27,7 +27,7 @@ static void deinit(void *extra) {
   Always takes the largest step, and takes the first available key.
   Also uses fake keys when needed.
 */
-static Action move(const GameState *state, int *dice, void *extra) {
+static Action move(const GameState *state, const int *dice, void *extra) {
   int *id = (int *)extra;
   if (dice[0] == 0 && dice[1] == 0 && dice[2] == 0) {
     if (state->position == 0)

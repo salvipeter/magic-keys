@@ -15,7 +15,7 @@ static void deinit(void *extra) {
 }
 
 /* Always takes the smallest step, and tries to get the golden key. */
-static Action move(const GameState *state, int *dice, void *extra) {
+static Action move(const GameState *state, const int *dice, void *extra) {
   if (dice[0] == 0 && dice[1] == 0 && dice[2] == 0) {
     if (state->position == 0)
       return TELEPORT | ROLL_AGAIN;

@@ -66,5 +66,5 @@ typedef struct {
   void (*deinit)(void *extra);  /* releases extra resources */
 
   /* The dice are represented by an array of 3 integers (0 = sleeping) */
-  Action (*move)(const GameState *state, int *dice, void *extra);
+  Action (*move)(const GameState *state, const int *dice, void *extra);
 } Player;
