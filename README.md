@@ -3,6 +3,10 @@
 The API is defined in `magic-keys.h`.
 A simple example bot is in `init_XPL428`, and another variation in `init_W8PRQR`.
 
+An interactive "bot" (`init_TERM1N`) is also supplied,
+which uses VT100 code sequences for better terminal output.
+Recommended to use it with logging (see below).
+
 The bash script `compile.sh` compiles the program with the specified bots:
 ```bash
 $ ./compile.sh W8PRQR XPL428

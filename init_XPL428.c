@@ -1,5 +1,3 @@
-#include <stdlib.h>
-
 #include "magic-keys.h"
 
 /*
