@@ -26,5 +26,5 @@ The probability of all dice falling asleep after *k* throws is shown below.
 This does not take into consideration waking up the dice (either by the central position
 or by throwing a fake key in the magic pond).
 
-![Throw probabilities](throw-probabilities.png)
+![Throw probabilities](throw-probability.png)
 
