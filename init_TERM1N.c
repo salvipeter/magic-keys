@@ -7,7 +7,7 @@
 static void deinit(void *extra) {
 }
 
-/* Always takes the smallest step, and tries to get the golden key. */
+/* Prints game state and asks the user what to do */
 static Action move(const GameState *state, const int *dice, void *extra) {
   printf("[8;1H");           /* position cursor at row 8, column 1 */
   for (int i = 0; i < 23; ++i) {
