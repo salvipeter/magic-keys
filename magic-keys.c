@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "magic-keys.h"
 
@@ -258,6 +259,7 @@ void init_NEPTUN1(Player *, int, int);
 void init_NEPTUN2(Player *, int, int);
 
 int main(int argc, char **argv) {
+  srand(time(NULL));
   int rounds = 100;
   if (argc > 1)
     rounds = atoi(argv[1]);
